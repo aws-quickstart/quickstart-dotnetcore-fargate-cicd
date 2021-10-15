@@ -18,4 +18,4 @@ project:
     - us-west-2
 tests:
   default:
-    template: cfn/fargate-cicd.yml
+    template: templates/fargate-cicd.template.yaml

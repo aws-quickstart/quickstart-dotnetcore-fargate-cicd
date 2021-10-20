@@ -21,8 +21,8 @@ Resources:
   VPC:
     Type: AWS::EC2::VPC
     Properties:
-      EnableDnsSupport: 'true'
-      EnableDnsHostnames: 'true'
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
       CidrBlock: !FindInMap
         - SubnetConfig
         - VPC
@@ -335,6 +335,11 @@ Resources:
   # CodeBuild
   CodeBuildServiceRole:
     Type: AWS::IAM::Role
+    Metadata:
+      cfn-lint:
+        config:
+          ignore_checks:
+            - EIAMPolicyWildcardResource
     Properties:
       Path: /
       AssumeRolePolicyDocument:
@@ -356,13 +361,13 @@ Resources:
                   - logs:CreateLogStream
                   - logs:PutLogEvents
                   - ecr:GetAuthorizationToken
-              - Resource: !Sub arn:aws:s3:::${ArtifactStore}/*
+              - Resource: !Sub arn:${AWS::Partition}:s3:::${ArtifactStore}/*
                 Effect: Allow
                 Action:
                   - s3:GetObject
                   - s3:PutObject
                   - s3:GetObjectVersion
-              - Resource: !Sub arn:aws:ecr:${AWS::Region}:${AWS::AccountId}:repository/${ImageRepository}
+              - Resource: !Sub arn:${AWS::Partition}:ecr:${AWS::Region}:${AWS::AccountId}:repository/${ImageRepository}
                 Effect: Allow
                 Action:
                   - ecr:GetDownloadUrlForLayer
@@ -399,7 +404,7 @@ Resources:
                   - 'codecommit:UploadArchive'
                   - 'codecommit:GetUploadArchiveStatus'
                   - 'codecommit:CancelUploadArchive'
-              - Resource: !Sub arn:aws:s3:::${ArtifactStore}/*
+              - Resource: !Sub arn:${AWS::Partition}:s3:::${ArtifactStore}/*
                 Effect: Allow
                 Action:
                   - s3:PutObject
@@ -414,7 +419,7 @@ Resources:
                 Action:
                   - codebuild:StartBuild
                   - codebuild:BatchGetBuilds
-              - Resource: arn:aws:ecs:*:099696859650:service/*
+              - Resource: !Sub arn:${AWS::Partition}:ecs:*:099696859650:service/*
                 Effect: Allow
                 Action:
                   - ecs:DescribeServices
@@ -422,11 +427,11 @@ Resources:
                 Effect: Allow
                 Action:
                   - ecs:UpdateService
-              - Resource: arn:aws:ecs:*:099696859650:task/*
+              - Resource: !Sub arn:${AWS::Partition}:ecs:*:099696859650:task/*
                 Effect: Allow
                 Action:
                   - ecs:DescribeTasks
-              - Resource: arn:aws:ecs:*:099696859650:container-instance/*
+              - Resource: !Sub arn:${AWS::Partition}:ecs:*:099696859650:container-instance/*
                 Effect: Allow
                 Action:
                   - ecs:ListTasks
@@ -448,7 +453,7 @@ Resources:
             Principal:
               Service: ecs-tasks.amazonaws.com
       ManagedPolicyArns:
-        - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+        - !Sub arn:${AWS::Partition}:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
 
 ## Fargate Hosting
   ImageRepository:
@@ -491,8 +496,8 @@ Resources:
     Properties:
       Family: !Sub ${AWS::StackName}-dotnet-app
       RequiresCompatibilities: [ FARGATE ]
-      Memory: 512
-      Cpu: 256
+      Memory: '512'
+      Cpu: '256'
       NetworkMode: awsvpc
       ExecutionRoleArn: !GetAtt TaskExecutionRole.Arn
       ContainerDefinitions:
@@ -547,7 +552,7 @@ Resources:
               ActionTypeId:
                 Category: Source
                 Owner: AWS
-                Version: 1
+                Version: '1'
                 Provider: CodeCommit
               Configuration:
                 BranchName: main
@@ -561,7 +566,7 @@ Resources:
               ActionTypeId:
                 Category: Build
                 Owner: AWS
-                Version: 1
+                Version: '1'
                 Provider: CodeBuild
               Configuration:
                 ProjectName: !Ref CodeBuildProject
@@ -576,7 +581,7 @@ Resources:
               ActionTypeId:
                 Category: Deploy
                 Owner: AWS
-                Version: 1
+                Version: '1'
                 Provider: ECS
               Configuration:
                 ClusterName: !Ref ECSCluster

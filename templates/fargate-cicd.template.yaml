@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: .NET CI/CD Environment
+Description: This template deploys a .NET CI/CD environment via Fargate (qs-1sctmf6go)
 Mappings:
   SubnetConfig:
     VPC:

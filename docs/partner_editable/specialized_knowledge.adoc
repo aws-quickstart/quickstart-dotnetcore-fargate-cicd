@@ -3,4 +3,4 @@
 // Include links if helpful. 
 // You don't need to list AWS services or point to general info about AWS; the boilerplate already covers this.
 
-This Quick Start also assumes familiarity with <knowledge expectations specific to this Quick Start>.
+While this Quick Start demonstrates the steps necessary to deploy containerized applications to AWS Fargate, the Quick Start does assume familiarity with https://dotnet.microsoft.com/[.NET] and how to build containerized applications using https://docs.docker.com/develop/develop-images/multistage-build/[Docker multi-stage builds].

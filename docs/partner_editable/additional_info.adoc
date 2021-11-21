@@ -1,23 +1,17 @@
-// Add steps as necessary for accessing the software, post-configuration, and testing. Don’t include full usage instructions for your software, but add links to your product documentation for that information.
-//Should any sections not be applicable, remove them
-
 == Test the deployment
 // If steps are required to test the deployment, add them here. If not, remove the heading
+This Quick Start includes CloudFormation output parameters that provide links to the infrastructure deployed by the Quick Start:
+
+|RepoUrl |The URL to use Git when creating a clone of the CodeCommit repository.
+|LoadBalancerUrl |The URL for the application load balancer in front of the Fargate service
+|CodePipelineUrl |The URL to navigate directly to the CodePipeline pipeline for the application.
+  
+After deploying this Quick Start, a build of the application will be started. You may use your browser to navigate to the CodePipeline URL to observe the build process, and after the build completes you may navigate to the load balancer URL to view the application in your browser.
 
 == Post-deployment steps
 // If post-deployment steps are required, add them here. If not, remove the heading
+Once you have deployed this Quick Start, you may use the CodeCommit repository URL to clone the repo and make modifications to the application. Any changes pushed to the repository will trigger an execution of the CodePipeline as well as a deployment of the application.
 
 == Best practices for using {partner-product-short-name} on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
-
-_Add any best practices for using the software._
-
-== Security
-// Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
-
-_Add any security-related information._
-
-== Other useful information
-//Provide any other information of interest to users, especially focusing on areas where AWS or cloud usage differs from on-premises usage.
-
-_Add any other details that will help the customer use the software on AWS._
+This Quick Start uses CloudFormation to deploy an application using a IAM role created by the Quick Start template. When deleting the stack created by launching this Quick Start's template, it is important to first delete the deployed application stack in order to avoid an error due to this IAM role having been deleted.

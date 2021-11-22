@@ -275,6 +275,7 @@ Resources:
 
 ## Load Balancer
   LoadBalancer:
+    DependsOn: GatewayToInternet
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
     Properties:
       Scheme: internet-facing
@@ -503,10 +504,6 @@ Resources:
       ContainerDefinitions:
         - Name: dotnet-app
           Image: amazon/amazon-ecs-sample
-          # EntryPoint:
-          #   - /usr/sbin/apache2
-          #   - -D
-          #   - FOREGROUND
           Essential: true
           Memory: 256
           MountPoints:

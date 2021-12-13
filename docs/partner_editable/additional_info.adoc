@@ -14,4 +14,4 @@ After deploying this Quick Start, a build of the application starts. You can use
 
 == Post-deployment steps
 // If post-deployment steps are required, add them here. If not, remove the heading
-Once you have deployed this Quick Start, you may use the CodeCommit repository URL to clone the repo and make modifications to the application. Any changes pushed to the repository will trigger an execution of the CodePipeline as well as a deployment of the application.
+After you've deployed this Quick Start, you can use the CodeCommit repository URL to clone the repo and make modifications to the application. When you push changes to the repo, the CodePipeline pipeline is triggered, and the application deployes. 

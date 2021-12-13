@@ -17,5 +17,7 @@ project:
     - us-west-1
     - us-west-2
 tests:
-  default:
+  fargatecicd:
+    parameters:
+      QSS3BucketName: $[taskcat_autobucket]
     template: templates/fargate-cicd.template.yaml

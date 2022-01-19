@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: This template deploys a .NET CI/CD environment via Fargate (qs-1sctmf6go)
+Description: This template deploys a .NET CI/CD environment via AWS Fargate 
 Metadata:
   cfn-lint:
     config:
@@ -14,9 +14,9 @@ Metadata:
           - QSS3KeyPrefix
     ParameterLabels:
       QSS3BucketName:
-        default: "S3 Bucket Name"
+        default: "Quick Start S3 bucket name"
       QSS3KeyPrefix:
-        default: "S3 Key Prefix Name (Path in the bucket inclusive of quickstart-qumulo-cloud-q folder)"
+        default: "Quick Start S3 key prefix"
 Parameters:
   QSS3BucketName:
     AllowedPattern: '^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$'
@@ -309,13 +309,13 @@ Resources:
           Value: !Ref 'AWS::StackName'
       VpcId: !Ref 'VPC'
       SecurityGroupEgress: 
-        - Description: Allow outbound HTTP access to the Internet
+        - Description: Allow outbound HTTP access to the Internet.
           IpProtocol: "tcp"
           FromPort: 0
           ToPort: 65535
           CidrIp: 0.0.0.0/0
       SecurityGroupIngress: 
-        - Description: Allow HTTP access to the Internet
+        - Description: Allow HTTP access to the Internet.
           IpProtocol: "tcp"
           FromPort: 80
           ToPort: 80
@@ -661,13 +661,13 @@ Resources:
 ## Outputs     
 Outputs:
   RepoUrl:
-    Description: The URL for the CodeCommit repository
+    Description: The URL for the CodeCommit repository.
     Value: !GetAtt SourceRepository.CloneUrlHttp
   LoadBalancerUrl:
-    Description: The URL for the load balancer in front of the Fargate service
+    Description: The URL for the Application Load Balancer in front of the Fargate service.
     Value: !Sub http://${LoadBalancer.DNSName}
   CodePipelineName:
-    Description: The name of the CodePipeline pipeline created for this workshop.
+    Description: The name of the CodePipeline pipeline.
     Value: !Ref Pipeline
   CodePipelineUrl:
     Value: !Sub https://console.aws.amazon.com/codepipeline/home?region=${AWS::Region}#/view/${Pipeline}

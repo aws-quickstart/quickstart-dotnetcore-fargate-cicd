@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: This template deploys a .NET CI/CD environment via AWS Fargate 
+Description: This template deploys a .NET CI/CD environment via AWS Fargate (qs-1sctmf6go)
 Metadata:
   cfn-lint:
     config:

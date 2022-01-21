@@ -1,5 +1,53 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: This template deploys a .NET CI/CD environment via Fargate (qs-1sctmf6go)
+Description: This template deploys a .NET CI/CD environment via AWS Fargate (qs-1sctmf6go)
+Metadata:
+  cfn-lint:
+    config:
+      ignore_checks:
+        - W9006
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: Quick Start parameters
+        Parameters:
+          - QSS3BucketName
+          - QSS3KeyPrefix
+    ParameterLabels:
+      QSS3BucketName:
+        default: "Quick Start S3 bucket name"
+      QSS3KeyPrefix:
+        default: "Quick Start S3 key prefix"
+Parameters:
+  QSS3BucketName:
+    AllowedPattern: '^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$'
+    ConstraintDescription:
+      The Quick Start bucket name can include numbers, lowercase
+      letters, uppercase letters, and hyphens (-). It cannot start or end with a 
+      hyphen (-).
+    Default: aws-quickstart
+    Description:
+      'Name of the S3 bucket for your copy of the Quick Start assets. 
+      Keep the default name unless you are customizing the template. 
+      Changing the name updates code references to point to a new Quick 
+      Start location. This name can include numbers, lowercase letters, 
+      uppercase letters, and hyphens, but do not start or end with a hyphen (-). 
+      See https://aws-quickstart.github.io/option1.html.'
+    Type: String
+  QSS3KeyPrefix:
+    AllowedPattern: '^[0-9a-zA-Z-/]*$'
+    ConstraintDescription:
+      The Quick Start S3 key prefix can include numbers, lowercase letters,
+      uppercase letters, hyphens (-), and forward slashes (/).
+    Default: quickstart-dotnetcore-fargate-cicd/
+    Description:
+      'S3 key prefix that is used to simulate a directory for your copy of the 
+      Quick Start assets. Keep the default prefix unless you are customizing 
+      the template. Changing this prefix updates code references to point to 
+      a new Quick Start location. This prefix can include numbers, lowercase 
+      letters, uppercase letters, hyphens (-), and forward slashes (/). 
+      See https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html 
+      and https://aws-quickstart.github.io/option1.html.'
+    Type: String
 Mappings:
   SubnetConfig:
     VPC:
@@ -261,13 +309,13 @@ Resources:
           Value: !Ref 'AWS::StackName'
       VpcId: !Ref 'VPC'
       SecurityGroupEgress: 
-        - Description: Allow outbound HTTP access to the Internet
+        - Description: Allow outbound HTTP access to the Internet.
           IpProtocol: "tcp"
           FromPort: 0
           ToPort: 65535
           CidrIp: 0.0.0.0/0
       SecurityGroupIngress: 
-        - Description: Allow HTTP access to the Internet
+        - Description: Allow HTTP access to the Internet.
           IpProtocol: "tcp"
           FromPort: 80
           ToPort: 80
@@ -530,8 +578,8 @@ Resources:
       Code:
         BranchName: main
         S3:
-          Bucket: dotnet-quickstarts
-          Key: source/fargate-cicd.zip
+          Bucket: !Ref QSS3BucketName
+          Key: !Sub ${QSS3KeyPrefix}fargate-cicd.zip
 
   # CodePipeline
   Pipeline:
@@ -613,13 +661,13 @@ Resources:
 ## Outputs     
 Outputs:
   RepoUrl:
-    Description: The URL for the CodeCommit repository
+    Description: The URL for the CodeCommit repository.
     Value: !GetAtt SourceRepository.CloneUrlHttp
   LoadBalancerUrl:
-    Description: The URL for the load balancer in front of the Fargate service
+    Description: The URL for the Application Load Balancer in front of the Fargate service.
     Value: !Sub http://${LoadBalancer.DNSName}
   CodePipelineName:
-    Description: The name of the CodePipeline pipeline created for this workshop.
+    Description: The name of the CodePipeline pipeline.
     Value: !Ref Pipeline
   CodePipelineUrl:
     Value: !Sub https://console.aws.amazon.com/codepipeline/home?region=${AWS::Region}#/view/${Pipeline}

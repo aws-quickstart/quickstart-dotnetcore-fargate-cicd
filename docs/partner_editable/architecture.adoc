@@ -8,21 +8,21 @@ AWS Cloud.
 
 [#architecture1]
 .Quick Start architecture for {partner-product-short-name} on AWS
-image::../images/architecture_diagram.png[Architecture]
+image::../images/dotnetcore-fargate-cicd-architecture-diagram.png[Architecture]
 
 As shown in <<architecture1>>, the Quick Start sets up the following:
 
 * A highly available architecture that spans two Availability Zones.
 * A VPC configured with public and private subnets, according to AWS
 best practices, to provide you with your own virtual network on AWS.
-* In the public subnets:
-** Managed network address translation (NAT) gateways to allow outbound
+* AWS CodePipeline to create a pipeline with source, build, and deploy stages. The pipeline is invoked when a developer commits a code change to the CodeCommit repository.
+** AWS CodeCommit to host the application source code in a Git repository.
+** AWS CodeBuild to serve as a CodePipeline stage for performing the build process for a container image.
+** Amazon Elastic Container Service (Amazon ECS) to deploy the updated application container image. 
+* Amazon Simple Storage Service (Amazon S3) to store AWS CodePipeline artifacts.
+* AWS Identity and Access Management (IAM) roles for the CI/CD pipeline's build and deployment process.
+* In the public subnets, managed network address translation (NAT) gateways to allow outbound
 internet access for resources in the private subnets.
 * In the private subnets:
-** An Amazon Elastic Container Service (ECS) service using AWS Fargate to host the containers.
-* An implementation of a CI/CD pipeline using AWS DevOps services:
-** An AWS CodeCommit code repository to host application source code.
-** An AWS CodePipeline build orchestration pipeline that automatically triggers a build process when changes are pushed to the code repository.
-** A CodePipeline stage that performs the build process for a container image using AWS CodeBuild.
-** A CodePipeline stage that deploys the updated application container image to the ECS service.
-* AWS Identity and Access Management roles for the CI/CD pipeline's build and deployment process.
+** AWS Fargate tasks to host the containers using Amazon ECS.
+** An Application Load Balancer to direct traffic to the Fargate cluster.

@@ -7,7 +7,8 @@ This Quick Start includes CloudFormation output parameters that provide links to
 
 |RepoUrl |The URL to GitHub for creating a clone of the CodeCommit repository.
 |LoadBalancerUrl |The URL for the Application Load Balancer in front of the Fargate service.
-|CodePipelineUrl |The URL to navigate directly to the CodePipeline pipeline for the application.
+|CodePipelineName |The name of the CodePipeline CI/CD pipeline for the application.
+|CodePipelineUrl |The URL to navigate directly to the CodePipeline CI/CD pipeline for the application.
 |===
   
 After deploying this Quick Start, a build of the application starts. You can use your browser to navigate to the CodePipeline URL to monitor the build process. After the build completes, you can navigate to the Application Load Balancer URL to view the application in your browser.

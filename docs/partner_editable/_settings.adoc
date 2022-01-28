@@ -1,8 +1,8 @@
 // Change the following attributes.
 :quickstart-project-name: quickstart-dotnetcore-fargate-cicd
-:partner-product-name: .NET Core CI/CD pipeline with delivery to AWS Fargate
+:partner-product-name: .NET 6 CI/CD pipeline with delivery to AWS Fargate
 // For the following attribute, if you have no short name, enter the same name as partner-product-name.
-:partner-product-short-name: .NET Core CI/CD pipeline with delivery to AWS Fargate
+:partner-product-short-name: .NET 6 CI/CD pipeline with delivery to AWS Fargate
 // If there's no partner, comment partner-company-name.
 //:partner-company-name: Example Company Name, Ltd.
 :doc-month: January

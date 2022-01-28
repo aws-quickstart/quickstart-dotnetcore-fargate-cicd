@@ -1,4 +1,4 @@
-## .NET Core CI/CD for AWS Fargate on the AWS Cloud—Quick Start
+## .NET 6 CI/CD for AWS Fargate on the AWS Cloud—Quick Start
 
 For architectural details, step-by-step instructions, and customization options, see the [deployment guide](https://fwd.aws/YpRgX?).
 

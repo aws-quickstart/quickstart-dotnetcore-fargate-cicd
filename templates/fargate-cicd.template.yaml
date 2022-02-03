@@ -468,7 +468,7 @@ Resources:
                 Action:
                   - codebuild:StartBuild
                   - codebuild:BatchGetBuilds
-              - Resource: !Sub arn:${AWS::Partition}:ecs:*:099696859650:service/*
+              - Resource: !Sub arn:${AWS::Partition}:ecs:*:${AWS::AccountId}:service/*
                 Effect: Allow
                 Action:
                   - ecs:DescribeServices
@@ -476,11 +476,11 @@ Resources:
                 Effect: Allow
                 Action:
                   - ecs:UpdateService
-              - Resource: !Sub arn:${AWS::Partition}:ecs:*:099696859650:task/*
+              - Resource: !Sub arn:${AWS::Partition}:ecs:*:${AWS::AccountId}:task/*
                 Effect: Allow
                 Action:
                   - ecs:DescribeTasks
-              - Resource: !Sub arn:${AWS::Partition}:ecs:*:099696859650:container-instance/*
+              - Resource: !Sub arn:${AWS::Partition}:ecs:*:${AWS::AccountId}:container-instance/*
                 Effect: Allow
                 Action:
                   - ecs:ListTasks

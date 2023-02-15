@@ -1,0 +1,14 @@
+:partner-solution-project-name: quickstart-dotnetcore-fargate-cicd
+:partner-solution-github-org: aws-quickstart
+:partner-product-name: .NET 6 CI/CD pipeline with delivery to AWS Fargate
+:partner-product-short-name: .NET 6 CI/CD pipeline with delivery to AWS Fargate
+//:partner-company-name: Example Company Name, Ltd.
+:doc-month: February
+:doc-year: 2023
+//:partner-contributors: John Smith, {partner-company-name}
+// :other-contributors: Akua Mansa, Trek10
+:aws-contributors: Andy Hopper, AWS Microsoft Specialist SA Team
+:aws-ia-contributors: Dave May, AWS Integration & Automation team
+:deployment_time: 15 minutes
+:default_deployment_region: us-east-1
+// :private_repo:

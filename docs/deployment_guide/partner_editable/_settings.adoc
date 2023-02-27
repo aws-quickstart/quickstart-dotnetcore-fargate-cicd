@@ -1,7 +1,7 @@
 :partner-solution-project-name: quickstart-dotnetcore-fargate-cicd
 :partner-solution-github-org: aws-quickstart
-:partner-product-name: .NET 6 CI/CD pipeline with delivery to AWS Fargate
-:partner-product-short-name: .NET 6 CI/CD pipeline with delivery to AWS Fargate
+:partner-product-name: CI/CD for .NET Applications on AWS Fargate
+:partner-product-short-name: CI/CD for .NET Applications on AWS Fargate
 //:partner-company-name: Example Company Name, Ltd.
 :doc-month: February
 :doc-year: 2023

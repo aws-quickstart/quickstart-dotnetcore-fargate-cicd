@@ -1,0 +1,18 @@
+== Test the deployment
+// If steps are required to test the deployment, add them here. If not, remove the heading
+This Quick Start includes CloudFormation output parameters that provide links to the infrastructure deployed by the Quick Start:
+
+|===
+|Output |Description
+
+|RepoUrl |The URL to GitHub for creating a clone of the CodeCommit repository.
+|LoadBalancerUrl |The URL for the Application Load Balancer in front of the Fargate service.
+|CodePipelineName |The name of the CodePipeline CI/CD pipeline for the application.
+|CodePipelineUrl |The URL to navigate directly to the CodePipeline CI/CD pipeline for the application.
+|===
+  
+After deploying this Quick Start, a build of the application starts. You can use your browser to navigate to the CodePipeline URL to monitor the build process. After the build completes, you can navigate to the Application Load Balancer URL to view the application in your browser.
+
+== Post-deployment steps
+// If post-deployment steps are required, add them here. If not, remove the heading
+After you've deployed this Quick Start, you can use the CodeCommit repository URL to clone the repo and make modifications to the application. When you push changes to the repo, the CodePipeline pipeline is triggered, and the application deployes. 

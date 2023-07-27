@@ -1,0 +1,3 @@
+// Edit this placeholder text to accurately describe your architecture.
+
+This Quick Start builds a new AWS environment consisting of the VPC, subnets, NAT gateways, security groups, and other infrastructure components. It then deploys {partner-product-short-name} into this new VPC. For more details about the resources this Quick Start deploys, see the link:#_architecture[Architecture] section.

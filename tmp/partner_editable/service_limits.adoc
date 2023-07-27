@@ -1,0 +1,23 @@
+// Replace the <n> in each row to specify the number of resources used in this deployment. Remove the rows for resources that aren’t used.
+|===
+|Resource |This deployment uses
+
+// Space needed to maintain table headers
+|Amazon Simple Storage Service (S3) buckets |1
+|AWS CloudFormation Stacks |2
+|VPCs |1
+|Subnets |4
+|Elastic IP addresses |2
+|Managed NAT Gateways |2
+|Security groups |2
+|AWS Identity and Access Management (IAM) roles |3
+|Application Load Balancers |1
+|Amazon Elastic Container Registries |1
+|Amazon ECS Clusters |1
+|Amazon ECS Services |1
+|Amazon ECS Task Definitions |1
+|Amazon CloudWatch Log Group |1
+|AWS CodeCommit Repository |1
+|AWS CodePipeline Pipeline |1
+|AWS CodeBuild Projects |1
+|===

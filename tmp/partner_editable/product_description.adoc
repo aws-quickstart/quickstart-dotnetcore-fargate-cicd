@@ -1,0 +1,5 @@
+// Replace the content in <>
+// Briefly describe the software. Use consistent and clear branding. 
+// Include the benefits of using the software on AWS, and provide details on usage scenarios.
+
+This Quick Start deploys a complete CI/CD pipeline that uses the AWS portfolio of DevOps services to build and deploy a containerized .NET application. The Quick Start also demonstrates how to use Fargate to host a containerized application using a fully managed AWS infrastructure.

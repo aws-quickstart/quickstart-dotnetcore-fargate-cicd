@@ -1,0 +1,6 @@
+// Replace the content in <>
+// For example: “familiarity with basic concepts in networking, database operations, and data encryption” or “familiarity with <software>.”
+// Include links if helpful. 
+// You don't need to list AWS services or point to general info about AWS; the boilerplate already covers this.
+
+Even though this Quick Start provides the required steps to deploy containerized applications to Fargate, you should be familiar with https://dotnet.microsoft.com/[.NET^] and how to build containerized applications using https://docs.docker.com/develop/develop-images/multistage-build/[Docker multi-stage builds^].

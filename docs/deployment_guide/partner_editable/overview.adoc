@@ -1,7 +1,9 @@
-This guide covers the information you need to deploy the {partner-product-name} Partner Solution in the AWS Cloud.
-
 // Fill in the info in <angle brackets> for use on the landing page only: 
-This Amazon Web Services (AWS) Partner Solution deploys [<product name>](<partner's marketing product page>) in the AWS Cloud so that <purpose>. This solution is for <target users> who want to <do what> so that <why>. For more information, refer to the [<product name> documentation](<URL>).
+This guide provides instructions for deploying the {partner-product-short-name} Partner Solution reference architecture on the AWS Cloud.
+
+This Partner Solution is for users who want to create a continuous integration and continuous deployment (CI/CD) pipeline for a .NET application in their AWS environment using the AWS portfolio of DevOps services. This Partner Solution follows best practices to create a CI/CD pipeline that automatically builds and deploys a .NET application to Fargate. You can use this Partner Solution as both a reference architecture and a template for creating a fully implemented CI/CD pipeline for deploying a .NET application to Fargate. To deploy the application to Fargate, you upload the application's source code to the code repository created by the Partner Solution.
+
+Even though this Partner Solution provides the required steps to deploy containerized applications to Fargate, you should be familiar with https://dotnet.microsoft.com/[.NET^] and how to build containerized applications using https://docs.docker.com/develop/develop-images/multistage-build/[Docker multi-stage builds^].
 
 // Deploying this solution does not guarantee an organization’s compliance with any laws, certifications, policies, or other regulations. [Uncomment this statement only for solutions that relate to compliance. We'll add the corresponding reference part to the landing page and get legal approval before publishing.]
 
